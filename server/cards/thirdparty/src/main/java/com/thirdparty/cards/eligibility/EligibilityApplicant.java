@@ -1,16 +1,17 @@
 package com.thirdparty.cards.eligibility;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public final class EligibilityApplicant {
 
-    @NotNull
+    @NotBlank(message = "Name cannot be empty")
     private String name;
 
-    @NotNull
+    @NotBlank
     private String address;
 
-    @NotNull
+    @Email(message = "Requires a valid email")
     private String email;
 
     public EligibilityApplicant() {}

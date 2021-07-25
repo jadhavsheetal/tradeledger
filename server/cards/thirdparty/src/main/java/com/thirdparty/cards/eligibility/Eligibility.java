@@ -7,6 +7,9 @@ public final class Eligibility {
 
 	private final Set<String> eligibleCards;
 
+	private Eligibility() {
+		eligibleCards = new HashSet<String>();
+	}
 	private Eligibility(Set<String> eligibleCards) {
 		
 		this.eligibleCards = eligibleCards;

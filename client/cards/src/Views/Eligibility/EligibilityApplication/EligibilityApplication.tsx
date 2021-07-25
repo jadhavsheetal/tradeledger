@@ -17,14 +17,40 @@ interface FormValues {
   address: string;
 }
 
-const EligibilityApplication = () => {
+interface EligibilityProps {
+ saveEligibilityUser: Function;
+ saveEligibilityResults: Function;
+}
+
+const EligibilityApplication : React.FC<EligibilityProps> = ({saveEligibilityResults, saveEligibilityUser}) => {
   const { handleChange, handleSubmit, values } = useFormik<FormValues>({
     initialValues: {
       name: "",
       email: "",
       address: "",
     },
-    onSubmit: (values) => console.log(values),
+    onSubmit: (values) => {
+      const requestOpts = {
+                       method: 'post',
+                       headers: {'Content-Type':'application/json'},
+                       body: JSON.stringify(values)
+                     }
+
+      let apiUrl = "/eligibility/check"
+      fetch(apiUrl, requestOpts) // data source is an object, not an array.
+            .then(res => res.json())
+            .then(
+              result => {
+                console.log(result.eligibleCards);
+                saveEligibilityResults(result.eligibleCards)
+                saveEligibilityUser(values)
+
+              }
+            )
+            .catch(error => {
+              console.error('Failed to fetch api!', error);
+            });
+    },
   });
   return (
     <FormWrapper>

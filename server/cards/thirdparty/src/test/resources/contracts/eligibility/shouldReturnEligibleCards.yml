@@ -1,0 +1,18 @@
+request:
+  method: POST
+  url: /eligibility/check
+  body:
+    "name": "Boris"
+    "email": "B@B.com"
+    "address": "test address"
+  headers:
+    Content-Type: application/json
+
+response:
+  status: 200
+  body:
+    "eligibleCards": ["C1"]
+
+
+  headers:
+    Content-Type: application/json

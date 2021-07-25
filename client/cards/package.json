@@ -43,6 +43,10 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.9"
-  }
+    "@types/styled-components": "^5.1.9",
+    "@pact-foundation/pact": "9.16.0",
+    "@pact-foundation/pact-node": "10.12.2",
+    "cross-env": "^7.0.3"
+  },
+  "proxy": "http://localhost:8080"
 }
